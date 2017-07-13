@@ -8,9 +8,9 @@ extension GiphyVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: giphCellReuseIdentifier, for: indexPath) as! GifTableViewCell
         
         if showOnlyFavorites {
-            cell.img.image = UIImage.gif(data: onlyFavoriteGifs[indexPath.row])
+            cell.img.image = UIImage.gif(data: onlyFavoriteGifs[indexPath.row].data!)
         } else {
-            cell.img.image = UIImage.gif(data: gifDatas[indexPath.row])
+            cell.img.image = UIImage.gif(data: gifDatas[indexPath.row].data!)
         }
         
         
@@ -26,6 +26,8 @@ extension GiphyVC {
             } else {
                 cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
             }
+        } else {
+            cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
         }
         
         return cell
@@ -33,7 +35,7 @@ extension GiphyVC {
     
     func btnPress(sender: UIButton!) {
         print("button tapped")
-        let activityVC = UIActivityViewController(activityItems: [self.gifDatas[sender.tag]], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [self.gifDatas[sender.tag].url], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }

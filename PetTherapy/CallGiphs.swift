@@ -16,7 +16,10 @@ extension GiphyVC
             { (dataArr) in
                 
                 List.shared.animalURLs += [chosenAnimal]
-                self.gifDatas += dataArr
+                for dict in dataArr {
+                    self.gifDatas.append(Gif(withDictionary: dict as NSDictionary))
+                }
+                
                 DispatchQueue.main.async
                 {
                     

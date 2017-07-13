@@ -8,10 +8,10 @@ class Get {
      var repeatCheck = [String:Bool]()
     var callCount = 0
     
-    func secondGiphData(giphARr: [[String]], completion: @escaping ([Data]) -> Void ) {
+    func secondGiphData(giphARr: [[String]], completion: @escaping ([[String:Any]]) -> Void ) {
         let disGroup = DispatchGroup()
         
-        var exitArr = [Data]()
+        var exitArr = [[String:Any]]()
         
         for giph in giphARr {
             
@@ -32,7 +32,7 @@ class Get {
                         
                     else
                     {                        
-                        exitArr += [data!]
+                        exitArr.append([kURL:url!, kData:data!, kName:""])
                         
                         disGroup.leave()
                     }

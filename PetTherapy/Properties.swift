@@ -4,7 +4,7 @@ import UIKit
 class GiphyVC: UIViewController {
 
     let giphCellReuseIdentifier = "giphCellReuseIdentifier"
-    var gifDatas = [Data]()
+    var gifDatas = [Gif]()
     let tableView = UITableView()
     var activityIndicator = UIActivityIndicatorView()
     var activityIndicator2 = UIActivityIndicatorView()
@@ -12,9 +12,9 @@ class GiphyVC: UIViewController {
     var isNewDataLoading = false
     var callCount = 0
     let giphyLogoView = UIImageView()
-    var buttonStates = [Data: Bool]()
+    var buttonStates = [Gif: Bool]()
     var showOnlyFavorites = false
-    var onlyFavoriteGifs = [Data]()
+    var onlyFavoriteGifs = [Gif]()
     
     }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		027D37211F17B4E5002697A3 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D37201F17B4E5002697A3 /* Gif.swift */; };
+		027D37231F17B550002697A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027D37221F17B550002697A3 /* Constants.swift */; };
 		750B22021F098843009C6834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750B22011F098843009C6834 /* AppDelegate.swift */; };
 		750B22041F098843009C6834 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750B22031F098843009C6834 /* Properties.swift */; };
 		750B22091F098843009C6834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 750B22081F098843009C6834 /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		027D37201F17B4E5002697A3 /* Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
+		027D37221F17B550002697A3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		750B21FE1F098843009C6834 /* PetTherapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetTherapy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		750B22011F098843009C6834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		750B22031F098843009C6834 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				755485A81F104DD7008EFE08 /* utilities */,
 				755485A71F104DCD008EFE08 /* GetGiphs */,
 				755485CC1F118F3F008EFE08 /* GiphCell.swift */,
+				027D37201F17B4E5002697A3 /* Gif.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				755485BF1F116348008EFE08 /* Array Ext..swift */,
 				755485C11F11636D008EFE08 /* UIDevice ext..swift */,
 				755485CE1F11BBCB008EFE08 /* Wagging.swift */,
+				027D37221F17B550002697A3 /* Constants.swift */,
 			);
 			name = utilities;
 			sourceTree = "<group>";
@@ -349,9 +355,11 @@
 				750B22231F099BDC009C6834 /* CallGiphs.swift in Sources */,
 				750B22211F099B8C009C6834 /* DidEndDragging.swift in Sources */,
 				755485AE1F104E83008EFE08 /* ViewDidLoad.swift in Sources */,
+				027D37231F17B550002697A3 /* Constants.swift in Sources */,
 				755485BE1F10CB52008EFE08 /* GetYoutubeURL.swift in Sources */,
 				755485CD1F118F3F008EFE08 /* GiphCell.swift in Sources */,
 				750B22171F098BD3009C6834 /* Gif+Swift.swift in Sources */,
+				027D37211F17B4E5002697A3 /* Gif.swift in Sources */,
 				755485C21F11636D008EFE08 /* UIDevice ext..swift in Sources */,
 				755485B01F104EDF008EFE08 /* HeightForRowAt.swift in Sources */,
 				750B22251F099C17009C6834 /* ConfigureActivityIndicator.swift in Sources */,
