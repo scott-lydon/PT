@@ -9,8 +9,18 @@ extension GiphyVC {
         
         if showOnlyFavorites {
             cell.img.image = UIImage.gif(data: onlyFavoriteGifs[indexPath.row].data!)
+            cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
         } else {
             cell.img.image = UIImage.gif(data: gifDatas[indexPath.row].data!)
+            if let x = buttonStates[gifDatas[indexPath.row]] {
+                if x == true {
+                    cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
+                } else {
+                    cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
+                }
+            } else {
+                cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
+            }
         }
         
         
@@ -20,15 +30,7 @@ extension GiphyVC {
         cell.favoriteBtn.addTarget(self, action: #selector(alterFavCount), for: .touchUpInside)
         cell.favoriteBtn.tag = indexPath.row
         
-        if let x = buttonStates[gifDatas[indexPath.row]] {
-            if x == true {
-                cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
-            } else {
-                cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
-            }
-        } else {
-            cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
-        }
+        
         
         return cell
     }
