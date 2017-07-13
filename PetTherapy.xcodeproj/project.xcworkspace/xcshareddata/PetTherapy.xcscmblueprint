@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "864CF5B3E45C4AFEACC2CE499F08D416BD5B21D1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1BEBE9F3EACBAD170C932C71B3A88BA493515EC8" : 9223372036854775807,
+    "864CF5B3E45C4AFEACC2CE499F08D416BD5B21D1" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "28A3BA0C-4295-4519-B9A7-7BA1A1E99FFC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1BEBE9F3EACBAD170C932C71B3A88BA493515EC8" : "",
+    "864CF5B3E45C4AFEACC2CE499F08D416BD5B21D1" : "PuppyTherapy-ScottLydon-codingChallenge\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PetTherapy",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PetTherapy.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sterlingann\/CodingChallenges.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1BEBE9F3EACBAD170C932C71B3A88BA493515EC8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/scott-lydon\/PuppyTherapy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "864CF5B3E45C4AFEACC2CE499F08D416BD5B21D1"
+    }
+  ]
+}
