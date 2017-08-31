@@ -6,7 +6,7 @@ import Foundation
 
 extension Get {
  
-        func giphEndpoints(completion: @escaping ([[String]], String) -> Void)  {
+        func giphEndpoints(completion: @escaping ([Giph]) -> Void)  {
             
         var isBigScreen = false
         let deviceName = UIDevice.current.deviceName()
@@ -28,29 +28,31 @@ extension Get {
                 print("there is an error -SL")
             } else {
                 do {
+                    
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
-                    if let giphData = json["data"] as? [[String: Any]] {
-                        var giphArr = [[String]]()
-                        for giphy in giphData {
-                            if let id = giphy["id"] as? String {
-                                if let images = giphy["images"] as? [String: Any] {
-                                    
+                    if let giphSData = json["data"] as? [[String: Any]] {
+                        var giphArr = [Giph]()
+                        let youtubeURL = self.getYoutubeUrl(animalType: petChoice)
+                        for giphData in giphSData {
+                            if let id = giphData["id"] as? String {
+                                if let images = giphData["images"] as? [String: Any] {
                                     var giphSize = "fixed_width"
                                     if isBigScreen {
                                         giphSize = "original"
                                     }
                                     if let fixedWidth = images[giphSize] as? [String: String] {
                                         if let url = fixedWidth["url"] {
-                                         
-                                                if id != "yjGdFXjeQsDqJNSzE4" {
-                                                    giphArr += [[url, id]]
-                                                }
+                                            if id != "yjGdFXjeQsDqJNSzE4" {
+                                                let giph = Giph(giphyEndPoint: url, id: id, youtubeURL: youtubeURL, gif: nil, width: nil, height: nil, data: nil)
+                                                giphArr += [giph]
+                                            }
                                        }
-                                    }
-                               }
+                                    }//if let fixedWith
+                                }
                             }
                         }
-                        completion(giphArr, self.getYoutubeUrl(animalType: petChoice))
+                        print(giphArr)
+                        completion(giphArr)
                     }
                 } catch {print("caught")}
             }

@@ -7,9 +7,9 @@ extension GiphyVC{
     func getSetGifs(){
         print("-->", #function, #line, Date())
         Get.shared.giphEndpoints() {
-            (gifEndPoints, chosenAnimal) in
+            (gifsWithEndPoints) in
           
-            Get.shared.actualGiphs(giphARr: gifEndPoints, completion:{
+            Get.shared.gifsImages(giphARr: gifsWithEndPoints, completion:{
                 (dataArr) in
                
                 List.shared.animalURLs += [chosenAnimal]
