@@ -6,7 +6,7 @@ import Foundation
 
 extension Get {
  
-        func firstGiphData(completion: @escaping ([[String]], String) -> Void)  {
+        func giphEndpoints(completion: @escaping ([[String]], String) -> Void)  {
             
         var isBigScreen = false
         let deviceName = UIDevice.current.deviceName()
@@ -57,7 +57,7 @@ extension Get {
         }// URLSession...
         task.resume()
         
-    }//firstGiphData
+    }//giphEndpoints
 }//Get
 
 

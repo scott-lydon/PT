@@ -3,23 +3,17 @@ import UIKit
 import Foundation
 
 
-extension GiphyVC
-{
-    func getSetGifs()
-    {
-        Get.shared.firstGiphData()
-        {
-            (gifArr, chosenAnimal) in
-            
-            
-            Get.shared.secondGiphData(giphARr: gifArr, completion:
-            { (dataArr) in
-                
+extension GiphyVC{
+    func getSetGifs(){
+        print("-->", #function, #line, Date())
+        Get.shared.giphEndpoints() {
+            (gifEndPoints, chosenAnimal) in
+          
+            Get.shared.actualGiphs(giphARr: gifEndPoints, completion:{
+                (dataArr) in
+               
                 List.shared.animalURLs += [chosenAnimal]
-                for dict in dataArr {
-                    self.gifDatas.append(Gif(withDictionary: dict as NSDictionary))
-                }
-                
+                self.gifDatas += dataArr
                 DispatchQueue.main.async
                 {
                     
@@ -28,6 +22,7 @@ extension GiphyVC
                     self.activityIndicator2.stopAnimating()
                     self.tableView.reloadData()
                     self.isNewDataLoading = false
+                    print("-->", #function, #line, Date())
                     print("reached main queue")
                 }
             })

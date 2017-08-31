@@ -8,19 +8,9 @@ extension GiphyVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: giphCellReuseIdentifier, for: indexPath) as! GifTableViewCell
         
         if showOnlyFavorites {
-            cell.img.image = UIImage.gif(data: onlyFavoriteGifs[indexPath.row].data!)
-            cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
+            cell.img.image = UIImage.gif(data: onlyFavoriteGifs[indexPath.row])
         } else {
-            cell.img.image = UIImage.gif(data: gifDatas[indexPath.row].data!)
-            if let x = buttonStates[gifDatas[indexPath.row]] {
-                if x == true {
-                    cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
-                } else {
-                    cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
-                }
-            } else {
-                cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
-            }
+            cell.img.image = UIImage.gif(data: gifDatas[indexPath.row])
         }
         
         
@@ -30,14 +20,20 @@ extension GiphyVC {
         cell.favoriteBtn.addTarget(self, action: #selector(alterFavCount), for: .touchUpInside)
         cell.favoriteBtn.tag = indexPath.row
         
-        
+        if let x = buttonStates[gifDatas[indexPath.row]] {
+            if x == true {
+                cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
+            } else {
+                cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
+            }
+        }
         
         return cell
     }
     
     func btnPress(sender: UIButton!) {
         print("button tapped")
-        let activityVC = UIActivityViewController(activityItems: [self.gifDatas[sender.tag].url], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [self.gifDatas[sender.tag]], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }

@@ -24,6 +24,7 @@ class GiphCell: UITableViewCell {
         let margin = CGFloat(20)
         btn.backgroundColor = bluePurple
         btn.frame = CGRect(x: contentView.bounds.width - buttonWidth - margin, y: contentView.bounds.height - buttonHeight - margin, width: buttonWidth, height: buttonHeight)
+        
     }
     
   
@@ -31,14 +32,6 @@ class GiphCell: UITableViewCell {
 
 
 /*
- 
- 
-
-
-
- 
- 
- 
  
  
  var myLabel = UILabel()
