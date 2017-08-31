@@ -10,7 +10,7 @@ extension GiphyVC {
         if showOnlyFavorites {
             cell.img.image = UIImage.gif(data: onlyFavoriteGifs[indexPath.row])
         } else {
-            cell.img.image = UIImage.gif(data: gifDatas[indexPath.row])
+            cell.img.image = UIImage.gif(data: readyToDisplayGiphs[indexPath.row].data!)
         }
         
         
@@ -20,7 +20,7 @@ extension GiphyVC {
         cell.favoriteBtn.addTarget(self, action: #selector(alterFavCount), for: .touchUpInside)
         cell.favoriteBtn.tag = indexPath.row
         
-        if let x = buttonStates[gifDatas[indexPath.row]] {
+        if let x = buttonStates[readyToDisplayGiphs[indexPath.row].data!] {
             if x == true {
                 cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
             } else {
@@ -33,14 +33,14 @@ extension GiphyVC {
     
     func btnPress(sender: UIButton!) {
         print("button tapped")
-        let activityVC = UIActivityViewController(activityItems: [self.gifDatas[sender.tag]], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [self.readyToDisplayGiphs[sender.tag]], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }
     
     func alterFavCount(sender: UIButton!) {
         
-        let gifID = gifDatas[sender.tag]
+        let gifID = readyToDisplayGiphs[sender.tag].data!
         
         if sender.imageView?.image == #imageLiteral(resourceName: "purpleHeartR") {
             DispatchQueue.global(qos: .background).async {

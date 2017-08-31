@@ -7,7 +7,7 @@ extension GiphyVC {
         if showOnlyFavorites {
             return onlyFavoriteGifs.count
         } else {
-            return gifDatas.count
+            return readyToDisplayGiphs.count
         }
         
         

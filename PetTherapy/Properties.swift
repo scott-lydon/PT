@@ -4,7 +4,7 @@ import UIKit
 class GiphyVC: UIViewController {
 
     let giphCellReuseIdentifier = "giphCellReuseIdentifier"
-    var gifDatas = [Data]()
+    var readyToDisplayGiphs = [Giph]()
     let tableView = UITableView()
     var activityIndicator = UIActivityIndicatorView()
     var activityIndicator2 = UIActivityIndicatorView()
