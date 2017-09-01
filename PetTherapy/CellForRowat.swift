@@ -20,8 +20,8 @@ extension GiphyVC {
         cell.favoriteBtn.addTarget(self, action: #selector(alterFavCount), for: .touchUpInside)
         cell.favoriteBtn.tag = indexPath.row
         
-        if let x = buttonStates[readyToDisplayGiphs[indexPath.row].data!] {
-            if x == true {
+        if let isFavorited = buttonStates[readyToDisplayGiphs[indexPath.row].data!] {
+            if isFavorited {
                 cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
             } else {
                 cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)

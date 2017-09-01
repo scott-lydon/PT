@@ -28,7 +28,6 @@ extension Get {
                 print("there is an error -SL")
             } else {
                 do {
-                    
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
                     if let giphSData = json["data"] as? [[String: Any]] {
                         var giphArr = [Giph]()

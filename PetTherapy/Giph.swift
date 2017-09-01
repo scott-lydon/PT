@@ -12,8 +12,9 @@ class Giph: NSObject {
     var width: CGSize?
     var height: CGSize?
     var data: Data?
+    var buttonState: UIImage = #imageLiteral(resourceName: "WhiteHeartR")
 
-    
+
     init(giphyEndPoint: String?, id: String?, youtubeURL: String?, gif: UIImage?, width: CGSize?, height: CGSize?, data: Data?) {
         self.id = id
         self.youtubeURL = youtubeURL
