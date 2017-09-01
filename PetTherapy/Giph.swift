@@ -3,7 +3,7 @@
 import Foundation
 import UIKit
 
-class Giph: NSObject {
+class Giph {
     let url: URL?
     let id: String?
     let youtubeURL: String?

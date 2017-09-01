@@ -19,7 +19,7 @@ extension Get {
         let petChoice = petOptions.randomItem()
           
         
-        let kURL = "http://api.giphy.com/v1/gifs/search?q=\(petChoice)&api_key=291f380b87884fc8996bd9d0078c42e3&limit=30&offset=\(callCount)"
+        let kURL = "http://api.giphy.com/v1/gifs/search?q=\(petChoice)&api_key=291f380b87884fc8996bd9d0078c42e3&limit=10&offset=\(callCount)"
         callCount += 30
         let newsURL = URL(string: kURL)
         let task = URLSession.shared.dataTask(with: newsURL! as URL) {

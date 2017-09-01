@@ -20,6 +20,7 @@ class Get {
                             print("there is an error -SL")
                         }
                         else {
+                            var giph = giph
                             giph.data = data!
                             exitArr += [giph]
                             completion(exitArr)
