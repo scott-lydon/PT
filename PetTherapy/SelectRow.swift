@@ -3,9 +3,13 @@ import UIKit
 extension GiphyVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        let controller = WebViewVC()
-        controller.webURLStr = List.shared.animalURLs[indexPath.row / 30]
+        let row = indexPath.row
+         if showOnlyFavorites {
+            controller.webURLStr = onlyFavoriteGifs[row / fetchCount].youtubeURL
+         } else {
+            controller.webURLStr = giphs[row / fetchCount].youtubeURL
+        }
         navigationController?.pushViewController(controller, animated: true)
-        
         
     }
 }

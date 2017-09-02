@@ -12,9 +12,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let navController = UINavigationController(rootViewController: GiphyVC())
+        navController.navigationBar.isTranslucent = false
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: GiphyVC())
-  
+        
         let bar = UINavigationBar.appearance()
         bar.barTintColor = bluePurple
         bar.tintColor = UIColor.white

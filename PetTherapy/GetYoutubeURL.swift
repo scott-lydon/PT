@@ -10,54 +10,58 @@ extension Get {
     
     func getYoutubeUrl(animalType: String) -> String {
         
-        var videoID = ""
-        let youtube = "https://www.youtube.com/watch?v="
+        var returnString = ""
         switch animalType {
         case "dogs", "puppies":
-            videoID = "jKTzjEOqA3I"
+            returnString = "https://www.youtube.com/watch?v=jKTzjEOqA3I"
         case "kittens", "cats":
-            videoID = "4IP_E7efGWE"
+            returnString = "https://www.youtube.com/watch?v=4IP_E7efGWE"
         case "penguin":
-            videoID = "8T86S_6gBWk"
+            returnString = "https://www.youtube.com/watch?v=8T86S_6gBWk"
+            //https://www.youtube.com/watch?v=uFaHk2fFEhY
         case "otter":
-            videoID = "5GyhFsJoiYc"
+            returnString = "https://www.youtube.com/watch?v=5GyhFsJoiYc"
+            //https://www.youtube.com/watch?v=gw_yPqiiPIA
+            //https://www.youtube.com/watch?v=VoXGG5byktw
         case "red+panda":
-            videoID = "aaMdE6-U56Y"
+            returnString = "https://www.youtube.com/watch?v=aaMdE6-U56Y"
+            //https://www.youtube.com/watch?v=9i-Yav3s6rU
         case "fennec+fox":
-            videoID = "Y3fJmRRq0Ac&t=169s"
+            returnString = "https://www.youtube.com/watch?v=Y3fJmRRq0Ac&t=169s"
         case "baby+hamster":
-            videoID = "riswlZTBilE"
+            returnString = "https://www.youtube.com/watch?v=riswlZTBilE"
+            //https://www.youtube.com/watch?v=GYvApvHOPXc
         case "baby+mouse":
-            videoID = "1qpDrH0JeNg"
+            returnString = "https://www.youtube.com/watch?v=1qpDrH0JeNg"
         case "baby+elephant":
-            videoID = "cQzV_p8fJ9U&t=175s"
+            returnString = "https://www.youtube.com/watch?v=cQzV_p8fJ9U&t=175s"
         case "baby+seal":
-            videoID = "8QWQZnBDf68"
+            returnString = "https://www.youtube.com/watch?v=8QWQZnBDf68"
         case "baby+raccoon":
-            videoID = "vBX9SCtDrxs&t=58s"
+            returnString = "https://www.youtube.com/watch?v=vBX9SCtDrxs&t=58s"
         case "baby+pig":
-            videoID = "3g_BO_Pjc-w"
+            returnString = "https://www.youtube.com/watch?v=3g_BO_Pjc-w"
         case "baby+bunny", "bunny":
-            videoID = "AXT4fBWfN1Y"
+            returnString = "https://www.youtube.com/watch?v=AXT4fBWfN1Y"
         case "baby+sloth":
-            videoID = "aaqzPMOd_1g"
+            returnString = "https://www.youtube.com/watch?v=aaqzPMOd_1g"
         case "baby+panda":
-            videoID = "__ztT6Hjw_o"
+            returnString = "https://www.youtube.com/watch?v=__ztT6Hjw_o"
         case "baby+fox":
-            videoID = "6HuIs2xW5kI"
+            returnString = "https://www.youtube.com/watch?v=6HuIs2xW5kI"
         case "baby+monkey":
-            videoID = "Vu55-haigoI"
+            returnString = "https://www.youtube.com/watch?v=Vu55-haigoI"
         case "baby+hedgehog":
-            videoID = "OjbpkginCSI"
+            returnString = "https://www.youtube.com/watch?v=OjbpkginCSI"
         case "duckling":
-            videoID = "A_rZ6xx1fbQ"
+            returnString = "https://www.youtube.com/watch?v=A_rZ6xx1fbQ"
         case "kitten":
-            videoID = "4IP_E7efGWE"
+            returnString = "https://www.youtube.com/watch?v=4IP_E7efGWE"
         case "baby+ferret":
-            videoID = "ex9AXcYR_a0"
+            returnString = "https://www.youtube.com/watch?v=ex9AXcYR_a0"
         default:
-            videoID = ""
+            returnString = ""
         }
-        return youtube + videoID
+        return returnString
     }//func
 }//giphyVC
