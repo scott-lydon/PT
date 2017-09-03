@@ -14,7 +14,7 @@
 		750B22091F098843009C6834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 750B22081F098843009C6834 /* Assets.xcassets */; };
 		750B220C1F098843009C6834 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 750B220A1F098843009C6834 /* LaunchScreen.storyboard */; };
 		750B22171F098BD3009C6834 /* Gif+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750B22161F098BD3009C6834 /* Gif+Swift.swift */; };
-		750B22191F098C20009C6834 /* Get1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750B22181F098C20009C6834 /* Get1.swift */; };
+		750B22191F098C20009C6834 /* Get.Giph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750B22181F098C20009C6834 /* Get.Giph.swift */; };
 		750B221F1F0990AA009C6834 /* GifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750B221E1F0990AA009C6834 /* GifTableViewCell.swift */; };
 		750B22211F099B8C009C6834 /* DidEndDragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750B22201F099B8C009C6834 /* DidEndDragging.swift */; };
 		750B22231F099BDC009C6834 /* CallGiphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750B22221F099BDC009C6834 /* CallGiphs.swift */; };
@@ -54,7 +54,7 @@
 		750B220B1F098843009C6834 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		750B220D1F098843009C6834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		750B22161F098BD3009C6834 /* Gif+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Swift.swift"; sourceTree = "<group>"; };
-		750B22181F098C20009C6834 /* Get1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Get1.swift; sourceTree = "<group>"; };
+		750B22181F098C20009C6834 /* Get.Giph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Get.Giph.swift; sourceTree = "<group>"; };
 		750B221E1F0990AA009C6834 /* GifTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifTableViewCell.swift; sourceTree = "<group>"; };
 		750B22201F099B8C009C6834 /* DidEndDragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DidEndDragging.swift; sourceTree = "<group>"; };
 		750B22221F099BDC009C6834 /* CallGiphs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallGiphs.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				755485C31F1163F2008EFE08 /* animalURLs.swift */,
-				750B22181F098C20009C6834 /* Get1.swift */,
+				750B22181F098C20009C6834 /* Get.Giph.swift */,
 			);
 			name = GetGiphs;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 				755485BB1F10531B008EFE08 /* WebView.swift in Sources */,
 				755485B41F104FCD008EFE08 /* NumbersOfRows.swift in Sources */,
 				750B221F1F0990AA009C6834 /* GifTableViewCell.swift in Sources */,
-				750B22191F098C20009C6834 /* Get1.swift in Sources */,
+				750B22191F098C20009C6834 /* Get.Giph.swift in Sources */,
 				755485C41F1163F2008EFE08 /* animalURLs.swift in Sources */,
 				755485A31F0EF039008EFE08 /* Device extension.swift in Sources */,
 				751599C71F0B9D5B00A7D045 /* configureFooterActivityIndicator.swift in Sources */,

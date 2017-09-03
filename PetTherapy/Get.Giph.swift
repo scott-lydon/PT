@@ -12,7 +12,7 @@ class Get {
     var repeatCheck = [String:Bool]()
     var callCount = 0
     
-        func firstGiphData(completion: @escaping ([String], String) -> Void)  {
+        func giphs(completion: @escaping (Double, Double, String, String) -> Void)  {
             
         var isBigScreen = false
             //When the gifs are hd it loads really poorly and crashes.
@@ -27,6 +27,7 @@ class Get {
         
         
         let kURL = "http://api.giphy.com/v1/gifs/search?q=\(petChoice)&api_key=291f380b87884fc8996bd9d0078c42e3&limit=\(fetchCount)&offset=\(callCount)"
+            
         callCount += fetchCount
         let newsURL = URL(string: kURL)
         let task = URLSession.shared.dataTask(with: newsURL! as URL) {
@@ -36,28 +37,38 @@ class Get {
             } else {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
-                    if let giphData = json["data"] as? [[String: Any]] {
-                        var giphArr = [String]()
+                    if let giphData = json["data"] as? [[String: Any]] { // All gifs for call
+                        //var giphArr = [String]()
                         for giphy in giphData {
                             if let id = giphy["id"] as? String {
+                                if id == "yjGdFXjeQsDqJNSzE4" {
+                                    continue
+                                }
                                 if let images = giphy["images"] as? [String: Any] {
                                     
                                     var giphSize = "fixed_width"
                                     if isBigScreen {
                                         giphSize = "original"
                                     }
-                                    if let fixedWidth = images[giphSize] as? [String: String] {
-                                        if let url = fixedWidth["url"] {
-                                         
-                                                if id != "yjGdFXjeQsDqJNSzE4" {
-                                                    giphArr += [url, id]
+                                    if let size = images[giphSize] as? [String: String] {
+                                        //print(size)
+
+                                        guard let width = size["width"] else {continue}
+                                        guard let height = size["height"] else{continue}
+                                        guard let url = size["url"] else {continue}
+                                            //giphArr += [url, id, width, height]
+                                        if let widthInt = Double(width) {
+                                            if let heightInt = Double(height)  {
+                                                if widthInt > 0 && heightInt > 0 {
+                                                     completion(widthInt, heightInt, url, self.getYoutubeUrl(animalType: petChoice))
                                                 }
-                                       }
+                                            }
+                                        }
                                     }
                                }
                             }
                         }
-                        completion(giphArr, self.getYoutubeUrl(animalType: petChoice))
+                        //completion(giphArr, self.getYoutubeUrl(animalType: petChoice))
                     }
                 } catch {print("caught")}
             }
