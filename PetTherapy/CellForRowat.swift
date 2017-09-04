@@ -23,7 +23,7 @@ extension GiphyVC {
         isScrollingUp = row > lastCellForRowAtIndex
         lastCellForRowAtIndex = row
         getNext(5, currentRow: row)
-        cleanUp()
+        cleanUp(currentRow: row)
 
         if showOnlyFavorites {
             if let data = onlyFavoriteGifs[row].data {
@@ -108,32 +108,40 @@ extension GiphyVC {
         }
     
     
-    func cleanUp() {
+    func cleanUp(currentRow: Int) {
+        
         switch directionFavOrAll {
-            
         case .scrollUpFavs:
-            
-            onlyFavoriteGifs[favLowestIndexWithData].data = nil
+            favLowestIndexWithData = currentRow - 10
+            if favLowestIndexWithData < 0 {return}
+            for index in 0...favLowestIndexWithData {
+                onlyFavoriteGifs[index].data = nil
+            }
             favLowestIndexWithData += 1
-            if favLowestIndexWithData >= onlyFavoriteGifs.count {favLowestIndexWithData = onlyFavoriteGifs.count - 1}
             
         case .scrollUpAll:
-            
-            giphs[lowestIndexWithData].data = nil
+            lowestIndexWithData = currentRow - 10
+            if lowestIndexWithData < 0 {return}
+            for index in 0...lowestIndexWithData {
+                giphs[index].data = nil
+            }
             lowestIndexWithData += 1
-            if lowestIndexWithData >= giphs.count {lowestIndexWithData = giphs.count - 1}
             
         case .scrollDownFavs:
-            
-            onlyFavoriteGifs[favHighestIndexWithData].data = nil
-            favLowestIndexWithData -= 1
-            if favLowestIndexWithData < 0 {favLowestIndexWithData = 0}
+            favHighestIndexWithData = currentRow + 10
+            if favHighestIndexWithData >= onlyFavoriteGifs.count {return}
+            for index in favHighestIndexWithData..<onlyFavoriteGifs.count {
+                onlyFavoriteGifs[index].data = nil
+            }
+            favHighestIndexWithData -= 1
             
         case .scrollDownAll:
-            
-            giphs[highestIndexWithData].data = nil
+            highestIndexWithData = currentRow + 10
+            if highestIndexWithData >= giphs.count {return}
+            for index in highestIndexWithData..<giphs.count {
+                giphs[index].data = nil
+            }
             highestIndexWithData -= 1
-            if highestIndexWithData < 0 {highestIndexWithData = 0}
         }
     }
     
