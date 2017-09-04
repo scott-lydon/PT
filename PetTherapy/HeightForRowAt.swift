@@ -4,7 +4,6 @@ extension GiphyVC {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var giph: Giph
-        
         if showOnlyFavorites {
             giph = onlyFavoriteGifs[indexPath.row]
         } else {

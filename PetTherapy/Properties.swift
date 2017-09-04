@@ -16,6 +16,21 @@ class GiphyVC: UIViewController {
     var showOnlyFavorites = false
     var onlyFavoriteGifs = [Giph]()
     
+    var highestIndexWithData = 0
+    var lowestIndexWithData = 0
+    var lastCellForRowAtIndex = 0
+    
+    var favHighestIndexWithData = 0
+    var favLowestIndexWithData = 0
+    var favLastCellForRowAtIndex = 0
+    
+    var isScrollingUp = false
+    
+    enum Direction {
+        case up, down
+        }
+    var deleteIndex = 0
+    
     }
 
 

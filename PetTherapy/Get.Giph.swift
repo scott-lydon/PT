@@ -15,7 +15,6 @@ class Get {
         func giphs(completion: @escaping (Double, Double, String, String) -> Void)  {
             
         var isBigScreen = false
-            //When the gifs are hd it loads really poorly and crashes.
         let deviceName = UIDevice.current.deviceName()
         if deviceName == "iPhone7,1" || deviceName == "iPhone8,2" || deviceName == "iPhone9,2" || deviceName == "iPhone9,4" || UIDevice.current.model == "iPad" {
             isBigScreen = true
@@ -51,12 +50,10 @@ class Get {
                                         giphSize = "original"
                                     }
                                     if let size = images[giphSize] as? [String: String] {
-                                        //print(size)
 
                                         guard let width = size["width"] else {continue}
-                                        guard let height = size["height"] else{continue}
+                                        guard let height = size["height"] else {continue}
                                         guard let url = size["url"] else {continue}
-                                            //giphArr += [url, id, width, height]
                                         if let widthInt = Double(width) {
                                             if let heightInt = Double(height)  {
                                                 if widthInt > 0 && heightInt > 0 {
@@ -74,7 +71,6 @@ class Get {
             }
         }// URLSession...
         task.resume()
-        
     }//firstGiphData
 }//Get
 

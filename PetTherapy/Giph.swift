@@ -13,6 +13,7 @@ class Giph: NSObject {
     var height: Double
     var url: String
     var youtubeURL: String
+    var data: Data?
     init(_ width: Double, _ height: Double, _ url: String, _ youtubeURL: String) {
         self.width = width
         self.height = height

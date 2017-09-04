@@ -19,13 +19,27 @@ extension GiphyVC {
     }
     
     
-    
     func setCellAppearance(_ cell: GifTableViewCell, _ row: Int) {
+        isScrollingUp = row > lastCellForRowAtIndex
+        lastCellForRowAtIndex = row
+        getNext(5, currentRow: row)
+        cleanUp()
+
         if showOnlyFavorites {
-            cell.img.downloadImageFrom(link: onlyFavoriteGifs[row].url, contentMode: UIViewContentMode.scaleAspectFill)
+            if onlyFavoriteGifs[row].data == nil {
+                cell.img.downloadImageFrom(link: onlyFavoriteGifs[row].url, row, showOnlyFavorites)
+            } else {
+                //cell.img.loadGif(name: <#T##String#>)
+            }
+            
             cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
         } else {
-            cell.img.downloadImageFrom(link: giphs[row].url, contentMode: UIViewContentMode.scaleAspectFill)
+            if giphs[row].data == nil {
+                cell.img.downloadImageFrom(link: giphs[row].url, row, showOnlyFavorites)
+            } else {
+                //cell.img.loadGif( trying to load from data
+            }
+            
             if let x = buttonStates[giphs[row]] {
                 if x == true {
                     cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
@@ -37,6 +51,93 @@ extension GiphyVC {
             }
         }
     }
+    
+    enum DirectionFavOrAll {
+        case scrollUpFavs, scrollDownFavs, scrollUpAll, scrollDownAll
+    }
+    
+    var directionFavOrAll: DirectionFavOrAll {
+        if isScrollingUp {
+            if showOnlyFavorites {
+                return .scrollUpFavs
+            } else {
+                return .scrollUpAll
+            }
+        } else {
+            if showOnlyFavorites {
+                return .scrollDownFavs
+            } else {
+                return .scrollDownAll
+            }
+        }
+    }
+    
+    
+    func getNext(_ count: Int, currentRow: Int) {
+        var farthestIndex: Int
+        switch directionFavOrAll {
+        case .scrollUpFavs:
+            farthestIndex = currentRow + count
+            if farthestIndex >= onlyFavoriteGifs.count {farthestIndex = onlyFavoriteGifs.count - 1}
+            while onlyFavoriteGifs[farthestIndex].data == nil && farthestIndex > currentRow {
+                onlyFavoriteGifs[farthestIndex].getGifData()
+                farthestIndex -= 1
+            }
+        case .scrollUpAll:
+            farthestIndex = currentRow + count
+            if farthestIndex >= giphs.count {farthestIndex = giphs.count - 1}
+            while giphs[farthestIndex].data == nil && farthestIndex > currentRow {
+                giphs[farthestIndex].getGifData()
+                farthestIndex -= 1
+            }
+        case .scrollDownFavs:
+            farthestIndex = currentRow - count
+            if farthestIndex < 0 {farthestIndex = 0}
+            while onlyFavoriteGifs[farthestIndex].data == nil && farthestIndex < currentRow {
+                onlyFavoriteGifs[farthestIndex].getGifData()
+                farthestIndex += 1
+            }
+        case .scrollDownAll:
+            farthestIndex = currentRow - count
+            if farthestIndex < 0 {farthestIndex = 0}
+            while giphs[farthestIndex].data == nil && farthestIndex < currentRow {
+                giphs[farthestIndex].getGifData()
+                farthestIndex += 1
+                }
+            }
+        }
+    
+    
+    func cleanUp() {
+        switch directionFavOrAll {
+            
+        case .scrollUpFavs:
+            
+            onlyFavoriteGifs[favLowestIndexWithData].data = nil
+            favLowestIndexWithData += 1
+            if favLowestIndexWithData >= onlyFavoriteGifs.count {favLowestIndexWithData = onlyFavoriteGifs.count - 1}
+            
+        case .scrollUpAll:
+            
+            giphs[lowestIndexWithData].data = nil
+            lowestIndexWithData += 1
+            if lowestIndexWithData >= giphs.count {lowestIndexWithData = giphs.count - 1}
+            
+        case .scrollDownFavs:
+            
+            onlyFavoriteGifs[favHighestIndexWithData].data = nil
+            favLowestIndexWithData -= 1
+            if favLowestIndexWithData < 0 {favLowestIndexWithData = 0}
+            
+        case .scrollDownAll:
+            
+            giphs[highestIndexWithData].data = nil
+            highestIndexWithData -= 1
+            if highestIndexWithData < 0 {highestIndexWithData = 0}
+        }
+    }
+    
+    
     
     func btnPress(sender: UIButton!) {
         print("button tapped")
@@ -82,15 +183,27 @@ extension GiphyVC {
 
 
 extension UIImageView {
-    func downloadImageFrom(link:String, contentMode: UIViewContentMode) {
+    func downloadImageFrom(link:String, _ row: Int, _ favsOnly: Bool) {
         URLSession.shared.dataTask( with: NSURL(string:link)! as URL, completionHandler: {
             (data, response, error) -> Void in
             DispatchQueue.main.async {
-                self.contentMode =  contentMode
+                self.contentMode =  UIViewContentMode.scaleAspectFill
                 if let data = data {
                     let img = UIImage.gif(data: data)
                     self.image = img
-                    
+                }
+            }
+        }).resume()
+    }
+}
+
+extension Giph {
+    func getGifData() {
+        URLSession.shared.dataTask( with: NSURL(string:self.url)! as URL, completionHandler: {
+            (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                if let data = data {
+                    self.data = data
                 }
             }
         }).resume()
