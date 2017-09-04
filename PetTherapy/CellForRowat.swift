@@ -26,18 +26,18 @@ extension GiphyVC {
         cleanUp()
 
         if showOnlyFavorites {
-            if onlyFavoriteGifs[row].data == nil {
-                cell.img.downloadImageFrom(link: onlyFavoriteGifs[row].url, row, showOnlyFavorites)
+            if let data = onlyFavoriteGifs[row].data {
+                cell.img.image = UIImage.gif(data: data)
             } else {
-                //cell.img.loadGif(name: <#T##String#>)
+                cell.img.downloadImageFrom(link: onlyFavoriteGifs[row].url, row, showOnlyFavorites)
             }
-            
             cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
         } else {
-            if giphs[row].data == nil {
-                cell.img.downloadImageFrom(link: giphs[row].url, row, showOnlyFavorites)
+            if let data = giphs[row].data {
+                cell.img.image = UIImage.gif(data: data)
             } else {
-                //cell.img.loadGif( trying to load from data
+                cell.img.downloadImageFrom(link: giphs[row].url, row, showOnlyFavorites)
+                
             }
             
             if let x = buttonStates[giphs[row]] {
