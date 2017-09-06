@@ -24,6 +24,8 @@ class GiphyVC: UIViewController {
     var favLowestIndexWithData = 0
     var favLastCellForRowAtIndex = 0
     
+    var defaults = UserDefaults.standard
+    
     var isScrollingUp = false
     
     enum Direction {

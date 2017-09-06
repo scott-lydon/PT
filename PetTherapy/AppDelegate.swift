@@ -27,13 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         bar.isTranslucent = false
         
         UIApplication.shared.cancelAllLocalNotifications()
-
+    
             application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
             let notificaiton = UILocalNotification()
             let calendar = Calendar.current
-            print(Date())
             var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: Date())
-            components.minute = components.minute! + 1
+            //components.minute = components.minute! + 1
+            components.hour = 14
+            components.minute = 0
+            components.second = 0
+            components.nanosecond = 0
             let scheduledNotificationDate = calendar.date(from: components)
             notificaiton.fireDate = scheduledNotificationDate!
             notificaiton.repeatInterval = NSCalendar.Unit.day

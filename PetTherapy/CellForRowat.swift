@@ -29,15 +29,17 @@ extension GiphyVC {
             if let data = onlyFavoriteGifs[row].data {
                 cell.img.image = UIImage.gif(data: data)
             } else {
-                cell.img.downloadImageFrom(link: onlyFavoriteGifs[row].url, row, showOnlyFavorites)
+                cell.img.downloadImageFrom(cell, link: onlyFavoriteGifs[row].url, row, showOnlyFavorites)
+                print("We should have called the fetch favs", giphs[row].url)
             }
             cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
         } else {
             if let data = giphs[row].data {
                 cell.img.image = UIImage.gif(data: data)
             } else {
-                cell.img.downloadImageFrom(link: giphs[row].url, row, showOnlyFavorites)
                 
+                cell.img.downloadImageFrom(cell, link: giphs[row].url, row, showOnlyFavorites)
+                print("we should have called the fetch", giphs[row].url)
             }
             
             if let x = buttonStates[giphs[row]] {
@@ -180,6 +182,9 @@ extension GiphyVC {
                 }
                 if !has {
                     self.onlyFavoriteGifs += [gifID]
+                    print("we added a favorit!!!")
+                    self.defaults.set([self.onlyFavoriteGifs[0].data], forKey: "favs")
+                    print("reached we added")
                 }
             }
             sender.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
@@ -191,15 +196,20 @@ extension GiphyVC {
 
 
 extension UIImageView {
-    func downloadImageFrom(link:String, _ row: Int, _ favsOnly: Bool) {
+    func downloadImageFrom(_ cell: UITableViewCell,link:String, _ row: Int, _ favsOnly: Bool) {
+        print("call", Date())
         URLSession.shared.dataTask( with: NSURL(string:link)! as URL, completionHandler: {
             (data, response, error) -> Void in
+            print("error", error, Date())
             DispatchQueue.main.async {
                 self.contentMode =  UIViewContentMode.scaleAspectFill
                 if let data = data {
                     let img = UIImage.gif(data: data)
                     self.image = img
+                    print("data came in", Date())
                 }
+                cell.setNeedsLayout()
+                cell.layoutIfNeeded()
             }
         }).resume()
     }
