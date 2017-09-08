@@ -25,6 +25,7 @@
 		751599C71F0B9D5B00A7D045 /* configureFooterActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751599C61F0B9D5B00A7D045 /* configureFooterActivityIndicator.swift */; };
 		751599C91F0C202E00A7D045 /* giphyLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 751599C81F0C202E00A7D045 /* giphyLogo.gif */; };
 		751599CB1F0C55A300A7D045 /* darkFlat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 751599CA1F0C55A300A7D045 /* darkFlat.gif */; };
+		7549CD911F62430900FC076D /* PetTherapy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7549CD8F1F62430900FC076D /* PetTherapy.xcdatamodeld */; };
 		755485A31F0EF039008EFE08 /* Device extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755485A21F0EF039008EFE08 /* Device extension.swift */; };
 		755485AE1F104E83008EFE08 /* ViewDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755485AD1F104E83008EFE08 /* ViewDidLoad.swift */; };
 		755485B01F104EDF008EFE08 /* HeightForRowAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755485AF1F104EDF008EFE08 /* HeightForRowAt.swift */; };
@@ -66,6 +67,7 @@
 		751599C81F0C202E00A7D045 /* giphyLogo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphyLogo.gif; sourceTree = "<group>"; };
 		751599CA1F0C55A300A7D045 /* darkFlat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = darkFlat.gif; sourceTree = "<group>"; };
 		751599CC1F0E4C1E00A7D045 /* Puppy_Therapy.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Puppy_Therapy.mobileprovision; sourceTree = "<group>"; };
+		7549CD901F62430900FC076D /* PetTherapy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PetTherapy.xcdatamodel; sourceTree = "<group>"; };
 		755485A21F0EF039008EFE08 /* Device extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Device extension.swift"; sourceTree = "<group>"; };
 		755485AD1F104E83008EFE08 /* ViewDidLoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDidLoad.swift; sourceTree = "<group>"; };
 		755485AF1F104EDF008EFE08 /* HeightForRowAt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightForRowAt.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				750B22011F098843009C6834 /* AppDelegate.swift */,
+				7549CD8F1F62430900FC076D /* PetTherapy.xcdatamodeld */,
 				755485AC1F104E1E008EFE08 /* TableViewFeed */,
 				755485BC1F10655C008EFE08 /* WebViewVC */,
 				755485AB1F104E0B008EFE08 /* GiphLogo */,
@@ -347,6 +350,7 @@
 				755485B21F104F24008EFE08 /* Footer.swift in Sources */,
 				750B22231F099BDC009C6834 /* CallGiphs.swift in Sources */,
 				750B22211F099B8C009C6834 /* DidEndDragging.swift in Sources */,
+				7549CD911F62430900FC076D /* PetTherapy.xcdatamodeld in Sources */,
 				755485AE1F104E83008EFE08 /* ViewDidLoad.swift in Sources */,
 				027D37231F17B550002697A3 /* Constants.swift in Sources */,
 				755485BE1F10CB52008EFE08 /* GetYoutubeURL.swift in Sources */,
@@ -519,6 +523,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7549CD8F1F62430900FC076D /* PetTherapy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7549CD901F62430900FC076D /* PetTherapy.xcdatamodel */,
+			);
+			currentVersion = 7549CD901F62430900FC076D /* PetTherapy.xcdatamodel */;
+			path = PetTherapy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 750B21F61F098843009C6834 /* Project object */;
 }
