@@ -26,24 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.statusBarStyle = .lightContent
         bar.isTranslucent = false
         
-        UIApplication.shared.cancelAllLocalNotifications()
-    
-            application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
-            let notificaiton = UILocalNotification()
-            let calendar = Calendar.current
-            var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: Date())
-            //components.minute = components.minute! + 1
-            components.hour = 14
-            components.minute = 0
-            components.second = 0
-            components.nanosecond = 0
-            let scheduledNotificationDate = calendar.date(from: components)
-            notificaiton.fireDate = scheduledNotificationDate!
-            notificaiton.repeatInterval = NSCalendar.Unit.day
-            notificaiton.alertBody = "It is time for your daily dose of cute!"
-            notificaiton.alertAction = "Visit Daily Dose of Cute!"
-            notificaiton.soundName = UILocalNotificationDefaultSoundName
-            UIApplication.shared.scheduleLocalNotification(notificaiton)
+        scheduleNotifications()
    
         return true
     }
@@ -62,8 +45,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+        scheduleNotifications()
     }
 
 
+    func scheduleNotifications() {
+        
+        UIApplication.shared.cancelAllLocalNotifications()
+        
+        let notificaiton = UILocalNotification()
+        
+        let calendar = Calendar.current
+        
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: Date())
+        
+        //components.minute = components.minute! + 1
+        
+        components.hour = 14
+        
+        components.minute = 0
+        
+        components.second = 0
+        
+        components.nanosecond = 0
+        
+        let scheduledNotificationDate = calendar.date(from: components)
+        
+        notificaiton.fireDate = scheduledNotificationDate!
+        
+        notificaiton.repeatInterval = NSCalendar.Unit.day
+        
+        notificaiton.alertBody = "It is time for your daily dose of cute!"
+        
+        notificaiton.alertAction = "Visit Daily Dose of Cute!"
+        
+        notificaiton.soundName = UILocalNotificationDefaultSoundName
+        
+        UIApplication.shared.scheduleLocalNotification(notificaiton)
+        
+        
+        
+    }
 }
 

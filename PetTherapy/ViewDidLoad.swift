@@ -6,11 +6,6 @@ extension GiphyVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        if let favs = defaults.object(forKey: "favs") as? [Data] {
-            print("we have data")
-        
-        }
         
         print()
         

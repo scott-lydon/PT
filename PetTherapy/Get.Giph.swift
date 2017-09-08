@@ -14,8 +14,8 @@ class Get {
     
         func giphs(completion: @escaping (Double, Double, String, String) -> Void)  {
             
-        var isBigScreen = false
-        let deviceName = UIDevice.current.deviceName()
+        let isBigScreen = false
+       // let deviceName = UIDevice.current.deviceName()
 //        if deviceName == "iPhone7,1" || deviceName == "iPhone8,2" || deviceName == "iPhone9,2" || deviceName == "iPhone9,4" || UIDevice.current.model == "iPad" {
 //            isBigScreen = true
 //            print("set big screen to true")

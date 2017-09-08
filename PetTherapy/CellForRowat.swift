@@ -200,7 +200,7 @@ extension UIImageView {
         print("call", Date())
         URLSession.shared.dataTask( with: NSURL(string:link)! as URL, completionHandler: {
             (data, response, error) -> Void in
-            print("error", error, Date())
+            print("error", error ?? "error is nil", Date())
             DispatchQueue.main.async {
                 self.contentMode =  UIViewContentMode.scaleAspectFill
                 if let data = data {
