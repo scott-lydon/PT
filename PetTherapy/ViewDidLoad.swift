@@ -1,6 +1,6 @@
 
 import UIKit
-
+import CoreData
 
 extension GiphyVC {
     
