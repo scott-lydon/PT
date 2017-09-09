@@ -7,7 +7,7 @@ extension GiphyVC {
         let row = indexPath.row
         print("clicked ", row, giphs[row].url)
          if showOnlyFavorites {
-            controller.webURLStr = onlyFavoriteGifs[row / fetchCount].youtubeURL
+            controller.webURLStr = (onlyFavoriteGifs[row / fetchCount].value(forKeyPath: "youtubeURL") as? String)!
          } else {
             controller.webURLStr = giphs[row / fetchCount].youtubeURL
         }

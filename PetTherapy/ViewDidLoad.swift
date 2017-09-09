@@ -36,7 +36,7 @@ extension GiphyVC {
         //print(self.navigationController?.navigationBar.heightAnchor)
     }
     
-
+    
 
 
 }

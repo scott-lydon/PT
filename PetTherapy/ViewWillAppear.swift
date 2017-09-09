@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreData
 
 
 extension GiphyVC {
@@ -10,15 +11,21 @@ extension GiphyVC {
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        if #available(iOS 10.0, *) {
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavGiph")
+            do {
+                onlyFavoriteGifs = try managedContext.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [NSManagedObject] 
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+        } else {
+            print("alert the user that you cannot fetch the favorite gifs.USE CASE: user goes back to a previous os.")
+        }
         
-//        //Test:
-//        guard let settings = UIApplication.shared.currentUserNotificationSettings else {return}
-//        if settings.types == [] {
-//            let ac = UIAlertController(title: "can't schedule", message: "either we don't have permission to schedule notifications or we haven't asked yet", preferredStyle: .alert)
-//            ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-//            self.present(ac, animated: true, completion: nil)
-//            return
-//        }
 
     }
 }

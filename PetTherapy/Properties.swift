@@ -2,6 +2,7 @@
 import UIKit
 import CoreData
 
+
 class GiphyVC: UIViewController {
 
     let giphCellReuseIdentifier = "giphCellReuseIdentifier"
@@ -15,7 +16,7 @@ class GiphyVC: UIViewController {
     let giphyLogoView = UIImageView()
     var buttonStates = [Giph: Bool]()
     var showOnlyFavorites = false
-    var onlyFavoriteGifs = [Giph]()
+    var onlyFavoriteGifs = [NSManagedObject]()
     
     var highestIndexWithData = 0
     var lowestIndexWithData = 0
@@ -34,7 +35,11 @@ class GiphyVC: UIViewController {
         }
     var deleteIndex = 0
     
+    enum CoreDataKeys: String {
+        case height = "height", width = "width", url = "url", youtubeURL = "youtubeURL", data = "data", entity = "FavGiph"
     }
+   
+}
 
 
 
