@@ -13,6 +13,7 @@ extension GiphyVC {
         self.refreshCtrl = UIRefreshControl()
         //self.refreshCtrl.addTarget(self, action: #selector(GiphyVC.tableView.refreshTableView), for: .valueChanged)
         
+        
         print()
         
         checkConnectivity()
