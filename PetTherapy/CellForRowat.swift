@@ -257,9 +257,15 @@ extension UIImageView {
                     let img = UIImage.gif(data: data)
                     self.image = img
                     print("data came in", Date())
+                    
                 }
+                //This failed miserably, the wierdest trippy visual bug appeared.
+//                let indexPath = IndexPath(item: row, section: 0)
+//                tableview.reloadRows(at: [indexPath], with: .top)
+                /*
                 cell.setNeedsLayout()
                 cell.layoutIfNeeded()
+ */
             }
         }).resume()
     }
