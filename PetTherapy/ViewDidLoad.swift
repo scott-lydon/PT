@@ -7,6 +7,12 @@ extension GiphyVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        session = URLSession.shared
+        task = URLSessionDownloadTask()
+        
+        self.refreshCtrl = UIRefreshControl()
+        //self.refreshCtrl.addTarget(self, action: #selector(GiphyVC.tableView.refreshTableView), for: .valueChanged)
+        
         print()
         
         checkConnectivity()

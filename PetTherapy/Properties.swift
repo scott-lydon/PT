@@ -34,10 +34,12 @@ class GiphyVC: UIViewController {
         case up, down
         }
     var deleteIndex = 0
+
+    var refreshCtrl: UIRefreshControl!
+    var task: URLSessionDownloadTask!
+    var session: URLSession!
+    var cache: NSCache<AnyObject, AnyObject>!
     
-    enum CoreDataKeys: String {
-        case height = "height", width = "width", url = "url", youtubeURL = "youtubeURL", data = "data", entity = "FavGiph"
-    }
    
 }
 
