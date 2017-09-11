@@ -20,23 +20,29 @@ extension GiphyVC {
     }
     
     
+    
+    
+    
+    
+    
     func setCellAppearance(_ cell: GifTableViewCell, _ row: Int) {
         isScrollingUp = row > lastCellForRowAtIndex
         lastCellForRowAtIndex = row
-        //getNext(5, currentRow: row)
-        //cleanUp(currentRow: row)
+
 
         if showOnlyFavorites {
             if let data = onlyFavoriteGifs[row].value(forKey: "data") as? Data {
-                cell.img.image = UIImage.gif(data: data)
+                cell.img.downloadImageFrom(data)
             } else {
                 cell.img.downloadImageFrom(cell, link: (onlyFavoriteGifs[row].value(forKey: "url") as? String)!, row, showOnlyFavorites)
                 print("We should have called the fetch favs", giphs[row].url)
             }
             cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
         } else {
-            if let data = giphs[row].data {
-                cell.img.image = UIImage.gif(data: data)
+            if let data = GifCache.shared.general.object(forKey: row as AnyObject) {
+                print("we cached this one: \(row)")
+                cell.img.downloadImageFrom(data as! Data)
+                print("we should have used it\(row)")
             } else {
                 
                 cell.img.downloadImageFrom(cell, link: giphs[row].url, row, showOnlyFavorites)
@@ -53,6 +59,9 @@ extension GiphyVC {
                 cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
             }
         }
+        
+        //getNext(5, currentRow: row)
+        //cleanUp(currentRow: row)
     }
     
     enum DirectionFavOrAll {
@@ -109,8 +118,8 @@ extension GiphyVC {
 //                }
 //            }
 //        }
-    
-    
+//    
+//    
 //    func cleanUp(currentRow: Int) {
 //        
 //        switch directionFavOrAll {
@@ -244,7 +253,7 @@ extension GiphyVC {
 
 
 extension UIImageView {
-    func downloadImageFrom(_ cell: UITableViewCell,link:String, _ row: Int, _ favsOnly: Bool) {
+    func downloadImageFrom(_ cell: UITableViewCell, link:String, _ row: Int, _ favsOnly: Bool)  {
         print("call", Date())
         URLSession.shared.dataTask( with: NSURL(string:link)! as URL, completionHandler: {
             (data, response, error) -> Void in
@@ -257,36 +266,19 @@ extension UIImageView {
                     let img = UIImage.gif(data: data)
                     self.image = img
                     print("data came in", Date())
-                    
+                    DispatchQueue.global(qos: .background).async {
+                        GifCache.shared.general.setObject(data as AnyObject, forKey: row as AnyObject)
+                    }
                 }
-                //This failed miserably, the wierdest trippy visual bug appeared.
-//                let indexPath = IndexPath(item: row, section: 0)
-//                tableview.reloadRows(at: [indexPath], with: .top)
-                /*
-                cell.setNeedsLayout()
-                cell.layoutIfNeeded()
- */
+
             }
         }).resume()
+        
     }
     
-    func downloadImageFrom() {
+    func downloadImageFrom(_ data: Data) {
+        let img = UIImage.gif(data: data)
+        self.image = img
         
     }
 }
-
-//extension NSManagedObject {
-//    func getGifData() {
-//        URLSession.shared.dataTask( with: NSURL(string:self.url)! as URL, completionHandler: {
-//            (data, response, error) -> Void in
-//            DispatchQueue.main.async {
-//                if let data = data {
-//                    self.data = data
-//                }
-//            }
-//        }).resume()
-//    }
-//}
-//cell.img.image = UIImage.gif(data: onlyFavoriteGifs[row].data!)
-//albumArt.image = UIImage(named: "placeholder")
-//albumArt.downloadImageFrom(link: "http://someurl.com/image.jpg", contentMode: UIViewContentMode.scaleAspectFit)
