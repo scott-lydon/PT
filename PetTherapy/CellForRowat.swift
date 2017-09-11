@@ -269,6 +269,10 @@ extension UIImageView {
             }
         }).resume()
     }
+    
+    func downloadImageFrom() {
+        
+    }
 }
 
 //extension NSManagedObject {
