@@ -21,6 +21,7 @@ class GifTableViewCell: UITableViewCell {
         img.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         img.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         img.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

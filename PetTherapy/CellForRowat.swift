@@ -20,16 +20,11 @@ extension GiphyVC {
     }
     
     
-    
-    
-    
-    
-    
     func setCellAppearance(_ cell: GifTableViewCell, _ row: Int) {
         isScrollingUp = row > lastCellForRowAtIndex
         lastCellForRowAtIndex = row
 
-
+        cell.img.image = nil
         if showOnlyFavorites {
             if let data = onlyFavoriteGifs[row].value(forKey: "data") as? Data {
                 cell.img.downloadImageFrom(data)
@@ -265,7 +260,8 @@ extension UIImageView {
                 if let data = data {
                     let img = UIImage.gif(data: data)
                     self.image = img
-                    print("data came in", Date())
+                    print("data came in for row \(row) at ", Date())
+                    
                     DispatchQueue.global(qos: .background).async {
                         GifCache.shared.general.setObject(data as AnyObject, forKey: row as AnyObject)
                     }
