@@ -44,6 +44,7 @@
 		755485CD1F118F3F008EFE08 /* GiphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755485CC1F118F3F008EFE08 /* GiphCell.swift */; };
 		755485CF1F11BBCB008EFE08 /* Wagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755485CE1F11BBCB008EFE08 /* Wagging.swift */; };
 		755485D31F11C67C008EFE08 /* ConnectivityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755485D21F11C67C008EFE08 /* ConnectivityCheck.swift */; };
+		756B3DC11F68973B00676FD9 /* ViewDidAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756B3DC01F68973B00676FD9 /* ViewDidAppear.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		755485CC1F118F3F008EFE08 /* GiphCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphCell.swift; sourceTree = "<group>"; };
 		755485CE1F11BBCB008EFE08 /* Wagging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wagging.swift; sourceTree = "<group>"; };
 		755485D21F11C67C008EFE08 /* ConnectivityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityCheck.swift; sourceTree = "<group>"; };
+		756B3DC01F68973B00676FD9 /* ViewDidAppear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDidAppear.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 				755485AD1F104E83008EFE08 /* ViewDidLoad.swift */,
 				755485C51F1180D1008EFE08 /* viewWilldissappear.swift */,
 				755485C71F1181BC008EFE08 /* ViewWillAppear.swift */,
+				756B3DC01F68973B00676FD9 /* ViewDidAppear.swift */,
 			);
 			name = ViewFuncDeclaration;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				750B22191F098C20009C6834 /* Get.Giph.swift in Sources */,
 				755485C41F1163F2008EFE08 /* animalURLs.swift in Sources */,
 				755485A31F0EF039008EFE08 /* Device extension.swift in Sources */,
+				756B3DC11F68973B00676FD9 /* ViewDidAppear.swift in Sources */,
 				751599C71F0B9D5B00A7D045 /* configureFooterActivityIndicator.swift in Sources */,
 				755485C01F116348008EFE08 /* Array Ext..swift in Sources */,
 				755485C61F1180D1008EFE08 /* viewWilldissappear.swift in Sources */,

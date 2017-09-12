@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var isIOS10 = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let navController = UINavigationController(rootViewController: GiphyVC())
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         bar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         application.statusBarStyle = .lightContent
         bar.isTranslucent = false
-        
+       
         scheduleNotifications()
    
         return true
