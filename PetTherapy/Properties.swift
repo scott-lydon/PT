@@ -14,7 +14,7 @@ class GiphyVC: UIViewController {
     var isNewDataLoading = false
     var callCount = 0
     let giphyLogoView = UIImageView()
-    var buttonStates = [Giph: Bool]()
+    var buttonStates = [String: Bool]()
     var showOnlyFavorites = false
     var onlyFavoriteGifs = [NSManagedObject]()
     

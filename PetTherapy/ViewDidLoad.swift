@@ -11,19 +11,18 @@ extension GiphyVC {
         task = URLSessionDownloadTask()
         
         self.refreshCtrl = UIRefreshControl()
-        //self.refreshCtrl.addTarget(self, action: #selector(GiphyVC.tableView.refreshTableView), for: .valueChanged)
-        
         print()
         
         checkConnectivity()
         getSetGifs()
         configureTableView()
-        configureFooter()
+        if showOnlyFavorites {
+            self.tableView.tableFooterView?.isHidden = true
+        } else {
+            configureFooter()
+        }
+        
         configureActivityIndicator()
-        
-//        self.tableView.estimatedRowHeight = 200
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
         tableView.backgroundColor = bluePurple
         tableView.addSubview(giphyLogoView)
         tableView.bringSubview(toFront: giphyLogoView)
@@ -38,8 +37,6 @@ extension GiphyVC {
         mySEgmentedControl.selectedSegmentIndex = 0
         mySEgmentedControl.addTarget(self, action: #selector(showFavoritesOrGeneral), for: .valueChanged)
         navigationItem.titleView = mySEgmentedControl
-        
-        //print(self.navigationController?.navigationBar.heightAnchor)
     }
     
     

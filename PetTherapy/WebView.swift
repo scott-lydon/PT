@@ -18,18 +18,3 @@ class WebViewVC: UIViewController, WKUIDelegate {
     }
     
 }
-
-
-
-
-
-/*
- dogs/puppies
- 
- 
- 
- 
- 
- 
- 
- */

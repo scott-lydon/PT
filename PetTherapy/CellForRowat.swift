@@ -44,8 +44,8 @@ extension GiphyVC {
                 print("we should have called the fetch", giphs[row].url)
             }
             
-            if let x = buttonStates[giphs[row]] {
-                if x == true {
+            if let wasSelected = buttonStates[giphs[row].url] {
+                if wasSelected {
                     cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
                 } else {
                     cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
@@ -54,9 +54,7 @@ extension GiphyVC {
                 cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
             }
         }
-        
-        //getNext(5, currentRow: row)
-        //cleanUp(currentRow: row)
+
     }
     
     enum DirectionFavOrAll {
@@ -78,81 +76,7 @@ extension GiphyVC {
             }
         }
     }
-    
-    
-//    func getNext(_ count: Int, currentRow: Int) {
-//        var farthestIndex: Int
-//        switch directionFavOrAll {
-//        case .scrollUpFavs:
-//            farthestIndex = currentRow + count
-//            if farthestIndex >= onlyFavoriteGifs.count {farthestIndex = onlyFavoriteGifs.count - 1}
-//            while onlyFavoriteGifs[farthestIndex].value(forKey: "data") == nil && farthestIndex > currentRow {
-//                onlyFavoriteGifs[farthestIndex].getGifData()
-//                farthestIndex -= 1
-//            }
-//        case .scrollUpAll:
-//            farthestIndex = currentRow + count
-//            if farthestIndex >= giphs.count {farthestIndex = giphs.count - 1}
-//            while giphs[farthestIndex].data == nil && farthestIndex > currentRow {
-//                giphs[farthestIndex].getGifData()
-//                farthestIndex -= 1
-//            }
-//        case .scrollDownFavs:
-//            farthestIndex = currentRow - count
-//            if farthestIndex < 0 {farthestIndex = 0}
-//            while onlyFavoriteGifs[farthestIndex].value(forKey: "data") == nil && farthestIndex < currentRow {
-//                onlyFavoriteGifs[farthestIndex].getGifData()
-//                farthestIndex += 1
-//            }
-//        case .scrollDownAll:
-//            farthestIndex = currentRow - count
-//            if farthestIndex < 0 {farthestIndex = 0}
-//            while giphs[farthestIndex].data == nil && farthestIndex < currentRow {
-//                giphs[farthestIndex].getGifData()
-//                farthestIndex += 1
-//                }
-//            }
-//        }
-//    
-//    
-//    func cleanUp(currentRow: Int) {
-//        
-//        switch directionFavOrAll {
-//        case .scrollUpFavs:
-//            favLowestIndexWithData = currentRow - 10
-//            if favLowestIndexWithData < 0 {return}
-//            for index in 0...favLowestIndexWithData {
-//                onlyFavoriteGifs[index].value(forKey: "data") = nil
-//            }
-//            favLowestIndexWithData += 1
-//            
-//        case .scrollUpAll:
-//            lowestIndexWithData = currentRow - 10
-//            if lowestIndexWithData < 0 {return}
-//            for index in 0...lowestIndexWithData {
-//                giphs[index].data = nil
-//            }
-//            lowestIndexWithData += 1
-//            
-//        case .scrollDownFavs:
-//            favHighestIndexWithData = currentRow + 10
-//            if favHighestIndexWithData >= onlyFavoriteGifs.count {return}
-//            for index in favHighestIndexWithData..<onlyFavoriteGifs.count {
-//                onlyFavoriteGifs[index].data = nil
-//            }
-//            favHighestIndexWithData -= 1
-//            
-//        case .scrollDownAll:
-//            highestIndexWithData = currentRow + 10
-//            if highestIndexWithData >= giphs.count {return}
-//            for index in highestIndexWithData..<giphs.count {
-//                giphs[index].data = nil
-//            }
-//            highestIndexWithData -= 1
-//        }
-//    }
-    
-    
+
     
     func btnPress(sender: UIButton!) {
         print("button tapped")
@@ -162,42 +86,59 @@ extension GiphyVC {
     }
     
     func alterFavCount(sender: UIButton!) {
-        
-        let gifID = giphs[sender.tag]
-        
         if sender.imageView?.image == #imageLiteral(resourceName: "purpleHeartR") {
-            DispatchQueue.global(qos: .background).async {
-                //remove the value to the favorites array if it isn't there already.
-                for (index, gifData) in self.onlyFavoriteGifs.enumerated() {
-                    if gifData == gifID {
-                        self.onlyFavoriteGifs.remove(at: index)
-                    }
-                }
-            }
-            sender.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
-            buttonStates[gifID] = false
+            removeGifFromFavs(sender)
         } else {
-            DispatchQueue.global(qos: .background).async {
-                //add the value to the favorites array if it isn't there already.
-                var has = false
-                for gifData in self.onlyFavoriteGifs {
-                    if gifData == gifID {
-                        has = true
-                    }
-                }
-                if !has {
-                    if #available(iOS 10.0, *) {
-                        self.saveFavorite(gifID)
-                    } else {
-                        print("notify user that favorites will not be saved")
-                    }
-                    
-                }
-            }
-            sender.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
-            buttonStates[gifID] = true
+            addGifToFavs(sender)
         }
     }
+
+    func removeGifFromFavs(_ sender: UIButton) {
+        let row = sender.tag
+        var gifURL = giphs[row].url
+        if !showOnlyFavorites {
+            for (index, nsManagedObj) in onlyFavoriteGifs.enumerated() {
+                if gifURL == nsManagedObj.value(forKey: "url") as? String {
+                    let test = onlyFavoriteGifs.remove(at: index)
+                    print(test.value(forKey: "url"), "should be removed")
+                }
+            }
+        } else {
+            let index = row - 1
+            let test = onlyFavoriteGifs.remove(at: index)
+            print(test.value(forKey: "url"), "should be removed")
+            gifURL = (onlyFavoriteGifs[row].value(forKey: "url") as? String)!
+        }
+        sender.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
+        buttonStates[gifURL] = false
+    }
+    
+    
+    
+    func addGifToFavs(_ sender: UIButton) {
+        let gifURL = giphs[sender.tag].url
+        DispatchQueue.global(qos: .background).async {
+            //add the value to the favorites array if it isn't there already.
+            var has = false
+            for gifData in self.onlyFavoriteGifs {
+                if gifData.value(forKey: "url") as? String == gifURL {
+                    has = true
+                }
+            }
+            if !has {
+                if #available(iOS 10.0, *) {
+                    self.saveFavorite(self.giphs[sender.tag])
+                } else {
+                    print("notify user that favorites will not be saved")
+                }
+            }
+        }
+        sender.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
+        buttonStates[gifURL] = true
+    }
+ 
+
+
     
     func saveFavorite(_ fav: Giph) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -234,6 +175,7 @@ extension GiphyVC {
             if let result = try? context.fetch(fetchRequest) {
                 for object in result {
                     if object.value(forKeyPath: "url") as? String == fav.value(forKeyPath: "url") as? String {
+                        print(#line, "reached")
                         context.delete(object)
                     }
                 }

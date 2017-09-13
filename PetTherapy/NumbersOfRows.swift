@@ -9,8 +9,6 @@ extension GiphyVC {
         } else {
             return giphs.count
         }
-        
-        
-    }
+   }
     
 }

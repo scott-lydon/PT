@@ -5,6 +5,7 @@ import Foundation
 extension GiphyVC {
     
     func configureFooter() {
+        
         self.automaticallyAdjustsScrollViewInsets = false
         let footer = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         footer.backgroundColor = bluePurple
@@ -20,9 +21,7 @@ extension GiphyVC {
         self.tableView.tableFooterView?.isHidden = true
         
         _ = CGPoint(x: self.view.bounds.size.width / 2, y: -5) //rotationPoint
-        
-        
-        
+    
     }
 }
 
