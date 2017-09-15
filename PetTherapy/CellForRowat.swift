@@ -8,8 +8,12 @@ extension GiphyVC {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: giphCellReuseIdentifier, for: indexPath) as! GifTableViewCell
-        
+        print(#line, "<-Reached")
+        cell.imageView?.image = nil
+        cell.imageView?.loadGif(name: "giphyLogo")
+       
         setCellAppearance(cell, row)
+        
         cell.btn.addTarget(self, action: #selector(btnPress), for: .touchUpInside)
         cell.btn.tag = row
         
@@ -24,24 +28,23 @@ extension GiphyVC {
         isScrollingUp = row > lastCellForRowAtIndex
         lastCellForRowAtIndex = row
 
-        cell.img.image = nil
+        
         if showOnlyFavorites {
             if let data = onlyFavoriteGifs[row].value(forKey: "data") as? Data {
+                
                 cell.img.downloadImageFrom(data)
             } else {
                 cell.img.downloadImageFrom(cell, link: (onlyFavoriteGifs[row].value(forKey: "url") as? String)!, row, showOnlyFavorites)
-                print("We should have called the fetch favs", giphs[row].url)
             }
             cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
         } else {
             if let data = GifCache.shared.general.object(forKey: row as AnyObject) {
-                print("we cached this one: \(row)")
+                print(#line, "<-Reached")
+                cell.img.image = nil
                 cell.img.downloadImageFrom(data as! Data)
-                print("we should have used it\(row)")
             } else {
-                
+                print(#line, "<-Reached")
                 cell.img.downloadImageFrom(cell, link: giphs[row].url, row, showOnlyFavorites)
-                print("we should have called the fetch", giphs[row].url)
             }
             
             if let wasSelected = buttonStates[giphs[row].url] {
@@ -54,7 +57,6 @@ extension GiphyVC {
                 cell.favoriteBtn.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
             }
         }
-
     }
     
     enum DirectionFavOrAll {
@@ -79,7 +81,6 @@ extension GiphyVC {
 
     
     func btnPress(sender: UIButton!) {
-        print("button tapped")
         let activityVC = UIActivityViewController(activityItems: [self.giphs[sender.tag].url], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
@@ -100,13 +101,11 @@ extension GiphyVC {
             for (index, nsManagedObj) in onlyFavoriteGifs.enumerated() {
                 if gifURL == nsManagedObj.value(forKey: "url") as? String {
                     let test = onlyFavoriteGifs.remove(at: index)
-                    print(test.value(forKey: "url"), "should be removed")
                 }
             }
         } else {
             let index = row - 1
             let test = onlyFavoriteGifs.remove(at: index)
-            print(test.value(forKey: "url"), "should be removed")
             gifURL = (onlyFavoriteGifs[row].value(forKey: "url") as? String)!
         }
         sender.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
@@ -175,7 +174,6 @@ extension GiphyVC {
             if let result = try? context.fetch(fetchRequest) {
                 for object in result {
                     if object.value(forKeyPath: "url") as? String == fav.value(forKeyPath: "url") as? String {
-                        print(#line, "reached")
                         context.delete(object)
                     }
                 }
@@ -191,18 +189,18 @@ extension GiphyVC {
 
 extension UIImageView {
     func downloadImageFrom(_ cell: UITableViewCell, link:String, _ row: Int, _ favsOnly: Bool)  {
-        print("call", Date())
         URLSession.shared.dataTask( with: NSURL(string:link)! as URL, completionHandler: {
             (data, response, error) -> Void in
             if error != nil {
                 print("error", error!, Date())
             }
             DispatchQueue.main.async {
+                print(#line, "<-Reached")
+                self.image = nil
                 self.contentMode =  UIViewContentMode.scaleAspectFill
                 if let data = data {
                     let img = UIImage.gif(data: data)
                     self.image = img
-                    print("data came in for row \(row) at ", Date())
                     
                     DispatchQueue.global(qos: .background).async {
                         GifCache.shared.general.setObject(data as AnyObject, forKey: row as AnyObject)
@@ -215,6 +213,8 @@ extension UIImageView {
     }
     
     func downloadImageFrom(_ data: Data) {
+        print(#line, "<-Reached")
+        self.image = nil
         let img = UIImage.gif(data: data)
         self.image = img
         

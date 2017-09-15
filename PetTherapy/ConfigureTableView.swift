@@ -19,8 +19,5 @@ extension GiphyVC {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-
-        print("tableView should be configured")
-        
     }
 }
