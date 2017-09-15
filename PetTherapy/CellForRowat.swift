@@ -10,7 +10,7 @@ extension GiphyVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: giphCellReuseIdentifier, for: indexPath) as! GifTableViewCell
         print(#line, "<-Reached")
         cell.imageView?.image = nil
-        cell.imageView?.loadGif(name: "giphyLogo")
+        //cell.imageView?.loadGif(name: "giphyLogo")
        
         setCellAppearance(cell, row)
         
