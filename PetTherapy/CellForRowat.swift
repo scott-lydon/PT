@@ -10,7 +10,6 @@ extension GiphyVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: giphCellReuseIdentifier, for: indexPath) as! GifTableViewCell
         print(#line, "<-Reached")
         cell.imageView?.image = nil
-        //cell.imageView?.loadGif(name: "giphyLogo")
        
         setCellAppearance(cell, row)
         
@@ -28,7 +27,6 @@ extension GiphyVC {
         isScrollingUp = row > lastCellForRowAtIndex
         lastCellForRowAtIndex = row
 
-        
         if showOnlyFavorites {
             if let data = onlyFavoriteGifs[row].value(forKey: "data") as? Data {
                 
@@ -39,14 +37,14 @@ extension GiphyVC {
             cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
         } else {
             if let data = GifCache.shared.general.object(forKey: row as AnyObject) {
-                print(#line, "<-Reached")
+                print(#line, "<-Reached", row)
                 cell.img.image = nil
                 cell.img.downloadImageFrom(data as! Data)
             } else {
-                print(#line, "<-Reached")
+                print(#line, "<-Reached", "can't get from cache")
                 cell.img.downloadImageFrom(cell, link: giphs[row].url, row, showOnlyFavorites)
             }
-            
+            //One time it crashed on the next line...Not sure how or why, it said index was out of range.  wasSelected = nil.  Buttonstates.count = 0, giphs[row].url was a url, 30 count in giphs.
             if let wasSelected = buttonStates[giphs[row].url] {
                 if wasSelected {
                     cell.favoriteBtn.setImage(#imageLiteral(resourceName: "purpleHeartR"), for: .normal)
@@ -58,6 +56,7 @@ extension GiphyVC {
             }
         }
     }
+
     
     enum DirectionFavOrAll {
         case scrollUpFavs, scrollDownFavs, scrollUpAll, scrollDownAll
@@ -92,21 +91,28 @@ extension GiphyVC {
         } else {
             addGifToFavs(sender)
         }
+        
     }
 
     func removeGifFromFavs(_ sender: UIButton) {
+        print(#function, #line, sender.tag)
         let row = sender.tag
         var gifURL = giphs[row].url
         if !showOnlyFavorites {
             for (index, nsManagedObj) in onlyFavoriteGifs.enumerated() {
                 if gifURL == nsManagedObj.value(forKey: "url") as? String {
-                    let test = onlyFavoriteGifs.remove(at: index)
+                    onlyFavoriteGifs.remove(at: index)
+                    deleteFavorite(onlyFavoriteGifs[index])
                 }
             }
         } else {
-            let index = row - 1
-            let test = onlyFavoriteGifs.remove(at: index)
+            print(sender.tag, #line)
+            let index = row
+            print(index)
             gifURL = (onlyFavoriteGifs[row].value(forKey: "url") as? String)!
+            print("The index => ", index, "count", onlyFavoriteGifs.count)
+            deleteFavorite(onlyFavoriteGifs[index])
+            onlyFavoriteGifs.remove(at: index)
         }
         sender.setImage(#imageLiteral(resourceName: "WhiteHeartR"), for: .normal)
         buttonStates[gifURL] = false
@@ -164,12 +170,23 @@ extension GiphyVC {
    }
     
     func deleteFavorite(_ fav: NSManagedObject) {
+        print(#function, #line)
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         
         if #available(iOS 10.0, *) {
             let context = appDelegate.persistentContainer.viewContext
+            context.delete(fav)
+            do {
+                try context.save()
+            } catch {
+                print("catch")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            /*
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Giph")
             if let result = try? context.fetch(fetchRequest) {
                 for object in result {
@@ -177,12 +194,9 @@ extension GiphyVC {
                         context.delete(object)
                     }
                 }
-            }
-        } else {
-            // Fallback on earlier versions
+            }*/
         }
     }
-    
 }
 
 
@@ -203,7 +217,9 @@ extension UIImageView {
                     self.image = img
                     
                     DispatchQueue.global(qos: .background).async {
-                        GifCache.shared.general.setObject(data as AnyObject, forKey: row as AnyObject)
+                        if !favsOnly {
+                            GifCache.shared.general.setObject(data as AnyObject, forKey: row as AnyObject)
+                        }
                     }
                 }
 
