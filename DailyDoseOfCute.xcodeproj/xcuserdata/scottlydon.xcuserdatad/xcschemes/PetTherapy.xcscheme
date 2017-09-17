@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "750B21FD1F098843009C6834"
-               BuildableName = "PetTherapy.app"
-               BlueprintName = "PetTherapy"
-               ReferencedContainer = "container:PetTherapy.xcodeproj">
+               BuildableName = "DailyDoseOfCute.app"
+               BlueprintName = "DailyDoseOfCute"
+               ReferencedContainer = "container:DailyDoseOfCute.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "750B21FD1F098843009C6834"
-            BuildableName = "PetTherapy.app"
-            BlueprintName = "PetTherapy"
-            ReferencedContainer = "container:PetTherapy.xcodeproj">
+            BuildableName = "DailyDoseOfCute.app"
+            BlueprintName = "DailyDoseOfCute"
+            ReferencedContainer = "container:DailyDoseOfCute.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "750B21FD1F098843009C6834"
-            BuildableName = "PetTherapy.app"
-            BlueprintName = "PetTherapy"
-            ReferencedContainer = "container:PetTherapy.xcodeproj">
+            BuildableName = "DailyDoseOfCute.app"
+            BlueprintName = "DailyDoseOfCute"
+            ReferencedContainer = "container:DailyDoseOfCute.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "750B21FD1F098843009C6834"
-            BuildableName = "PetTherapy.app"
-            BlueprintName = "PetTherapy"
-            ReferencedContainer = "container:PetTherapy.xcodeproj">
+            BuildableName = "DailyDoseOfCute.app"
+            BlueprintName = "DailyDoseOfCute"
+            ReferencedContainer = "container:DailyDoseOfCute.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

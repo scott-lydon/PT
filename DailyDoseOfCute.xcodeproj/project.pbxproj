@@ -50,7 +50,7 @@
 /* Begin PBXFileReference section */
 		027D37201F17B4E5002697A3 /* Giph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Giph.swift; sourceTree = "<group>"; };
 		027D37221F17B550002697A3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		750B21FE1F098843009C6834 /* PetTherapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetTherapy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		750B21FE1F098843009C6834 /* DailyDoseOfCute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyDoseOfCute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		750B22011F098843009C6834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		750B22031F098843009C6834 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		750B22081F098843009C6834 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		750B21FF1F098843009C6834 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				750B21FE1F098843009C6834 /* PetTherapy.app */,
+				750B21FE1F098843009C6834 /* DailyDoseOfCute.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,9 +264,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		750B21FD1F098843009C6834 /* PetTherapy */ = {
+		750B21FD1F098843009C6834 /* DailyDoseOfCute */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 750B22101F098843009C6834 /* Build configuration list for PBXNativeTarget "PetTherapy" */;
+			buildConfigurationList = 750B22101F098843009C6834 /* Build configuration list for PBXNativeTarget "DailyDoseOfCute" */;
 			buildPhases = (
 				750B21FA1F098843009C6834 /* Sources */,
 				750B21FB1F098843009C6834 /* Frameworks */,
@@ -276,9 +276,9 @@
 			);
 			dependencies = (
 			);
-			name = PetTherapy;
+			name = DailyDoseOfCute;
 			productName = PetTherapy;
-			productReference = 750B21FE1F098843009C6834 /* PetTherapy.app */;
+			productReference = 750B21FE1F098843009C6834 /* DailyDoseOfCute.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -298,7 +298,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 750B21F91F098843009C6834 /* Build configuration list for PBXProject "PetTherapy" */;
+			buildConfigurationList = 750B21F91F098843009C6834 /* Build configuration list for PBXProject "DailyDoseOfCute" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -311,7 +311,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				750B21FD1F098843009C6834 /* PetTherapy */,
+				750B21FD1F098843009C6834 /* DailyDoseOfCute */,
 			);
 		};
 /* End PBXProject section */
@@ -489,7 +489,7 @@
 				INFOPLIST_FILE = PetTherapy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ScottAndTy.PetTherapy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ScottAndTy.DailyDoseOfCute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -503,7 +503,7 @@
 				INFOPLIST_FILE = PetTherapy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ScottAndTy.PetTherapy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ScottAndTy.DailyDoseOfCute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -512,7 +512,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		750B21F91F098843009C6834 /* Build configuration list for PBXProject "PetTherapy" */ = {
+		750B21F91F098843009C6834 /* Build configuration list for PBXProject "DailyDoseOfCute" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				750B220E1F098843009C6834 /* Debug */,
@@ -521,7 +521,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		750B22101F098843009C6834 /* Build configuration list for PBXNativeTarget "PetTherapy" */ = {
+		750B22101F098843009C6834 /* Build configuration list for PBXNativeTarget "DailyDoseOfCute" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				750B22111F098843009C6834 /* Debug */,
